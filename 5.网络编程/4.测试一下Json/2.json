@@ -1,0 +1,7 @@
+{
+	"name":	"zhang3",
+	"age":	18,
+	"sex":	"man",
+	"select":	false,
+	"hobby":	["game", "sleep", "eat"]
+}
