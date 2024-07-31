@@ -1,20 +1,3 @@
-#include <stdio.h>   
-#include <stdlib.h>
-#include <string.h>
-void get_memory(char **p,int num)
-{
-	*p=(char*)malloc(num);
-	
-}
-
-void main(void) 
-{
-	char *str=NULL;
-	get_memory(&str,100);
-	strcpy(str,"hello");
-	printf(str);
-	free(str);
-}
 
 /*这个C语言程序主要实现了以下几个功能：
 
@@ -31,3 +14,25 @@ void main(void)
 然后在这段内存中存储和打印一个字符串。不过，需要注意的是，程序中没有释放通过 malloc 分配的内存，
 这在实际编程中可能导致内存泄露。通常，在使用完动态分配的内存后，应该调用 free 函数来释放它。
 此外，main 函数的标准返回类型应为 int 而不是 void，并且在结束时返回一个值，通常是 return 0;。*/
+
+
+
+#include <stdio.h>   
+#include <stdlib.h>
+#include <string.h>
+
+
+void get_memory(char **p,int num)
+{
+	*p=(char*)malloc(num);
+	
+}
+
+void main(void) 
+{
+	char *str=NULL;
+	get_memory(&str,100);
+	strcpy(str,"hello");
+	printf(str);
+	free(str);
+}

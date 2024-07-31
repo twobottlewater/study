@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "bst.h": "c",
+        "dir.h": "c",
+        "dlist.h": "c",
+        "font.h": "c",
+        "lcd.h": "c",
+        "mfont.h": "c",
+        "touch.h": "c",
+        "counttime.h": "c",
+        "main.h": "c",
+        "log.h": "c",
+        "pthread.h": "c",
+        "bmp.h": "c",
+        "ioctl.h": "c",
+        "types.h": "c",
+        "mman.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
