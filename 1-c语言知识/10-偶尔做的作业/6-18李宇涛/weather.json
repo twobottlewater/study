@@ -1,0 +1,231 @@
+{
+	"showapi_res_error": "",
+	"showapi_res_id": "66700fe8fb638c2f886d28a9",
+	"showapi_res_code": 0,
+	"showapi_fee_num": 1,
+	"showapi_res_body": {
+		"remark": "",
+		"hourList": [{
+			"time": "202406171800",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "28",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406171900",
+			"wind_direction": "东南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "27",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406172000",
+			"wind_direction": "东南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "27",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406172100",
+			"wind_direction": "东南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "02",
+			"temperature": "27",
+			"area": "广州",
+			"weather": "阴"
+		}, {
+			"time": "202406172200",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "02",
+			"temperature": "27",
+			"area": "广州",
+			"weather": "阴"
+		}, {
+			"time": "202406172300",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "02",
+			"temperature": "27",
+			"area": "广州",
+			"weather": "阴"
+		}, {
+			"time": "202406180000",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "02",
+			"temperature": "27",
+			"area": "广州",
+			"weather": "阴"
+		}, {
+			"time": "202406180100",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "02",
+			"temperature": "27",
+			"area": "广州",
+			"weather": "阴"
+		}, {
+			"time": "202406180200",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "02",
+			"temperature": "27",
+			"area": "广州",
+			"weather": "阴"
+		}, {
+			"time": "202406180300",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "26",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406180400",
+			"wind_direction": "东南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "26",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406180500",
+			"wind_direction": "东南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "26",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406180600",
+			"wind_direction": "东南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "27",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406180700",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "29",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406180800",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "30",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406180900",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "30",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406181000",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "31",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406181100",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "31",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406181200",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "31",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406181300",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "31",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406181400",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "31",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406181500",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "31",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406181600",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "31",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}, {
+			"time": "202406181700",
+			"wind_direction": "南风",
+			"wind_power": "0-3级 微风  <5.4m/s",
+			"areaid": "101280101",
+			"weather_code": "04",
+			"temperature": "30",
+			"area": "广州",
+			"weather": "雷阵雨"
+		}],
+		"ret_code": 0,
+		"areaid": "101280101",
+		"area": "广州",
+		"areaCode": "440100"
+	}
+
+}
