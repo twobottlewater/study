@@ -1,0 +1,203 @@
+﻿串口编程
+=================
+   1.常见硬件传感器通信方式
+        SPI通信
+        IIC
+        USB
+        CAN
+        串口
+   2.串口接口介绍
+        9针串口
+        TX --》发送引脚
+        RX --》接收引脚
+        VCC --》高电平
+        GND --》接地
+     开发板右上角扩展串口
+           第一排驱动名：/dev/ttySAC1
+           第二排驱动名：/dev/ttySAC2
+           第三排驱动名：/dev/ttySAC3
+           第四排驱动名：没有驱动
+     串口如何连线
+           开发板       传感器
+           VCC          VCC
+           GND          GND
+           TX           RX
+           RX           TX
+   3.串口相关的理论概念
+         波特率：数据的传输速度，比如：115200表示每一秒钟串口传输115200个比特位
+         数据位：串口收发一帧数据的位数
+         停止位：标记数据的结束  
+         奇偶校验：
+                   奇校验：检查数据传输过程中1的个数是不是奇数个
+                             是奇数个 --》会自动把校验位设置为0
+                             不是奇数个 --》会自动把校验位设置为1
+                   偶校验：检查数据传输过程中1的个数是不是偶数个
+                             是偶数个 --》会自动把校验位设置为0
+                             不是偶数个 --》会自动把校验位设置为1
+         流控：流控可以使数据接收设备在不能接收数据时通知数据发送设备，使其停止发送
+
+QT中的串口编程
+======================
+   QT += serialport
+   1.涉及到类
+          QSerialPortInfo  //获取当前系统中所有串口信息
+              [static] QList<QSerialPortInfo> QSerialPortInfo::availablePorts() //获取当前系统所有可以使用的串口
+                      返回值：串口信息
+                        参数：
+              QString QSerialPortInfo::portName() const   //串口的名字
+              QString QSerialPortInfo::description() const  //串口的描述信息
+          QSerialPort     //表示串口对象
+              QSerialPort::QSerialPort(const QString &name, QObject *parent = Q_NULLPTR) //依据串口的设备名字构建串口对象
+              setBaudRate(qint32 baudRate, Directions directions = AllDirections) //设置波特率
+                         参数： baudRate --》你要设置的波特率 比如：QSerialPort::Baud115200
+              bool setDataBits(DataBits dataBits)   //设置数据位
+                         参数：dataBits --》数据位  比如：QSerialPort::Data8表示8位数据位
+              bool setStopBits(StopBits stopBits)  //设置停止位
+                         参数：stopBits --》停止位  比如：QSerialPort::OneStop表示1位停止位
+              bool setParity(Parity parity)       //设置校验
+                         参数：parity --》QSerialPort::NoParity     无奇偶校验
+                                          QSerialPort::EvenParity
+                                          QSerialPort::OddParity    奇校验和偶校验
+              bool setFlowControl(FlowControl flowControl)
+                         参数：flowControl --》QSerialPort::NoFlowControl  无流控
+                                               QSerialPort::HardwareControl  硬件流控
+                                               QSerialPort::SoftwareControl  软件流控
+   2.步骤
+         (1)获取系统可以使用的串口
+               [static] QList<QSerialPortInfo> QSerialPortInfo::availablePorts()
+         (2)创建一个串口对象
+               QSerialPort::QSerialPort(const QString &name, QObject *parent = Q_NULLPTR)
+                              参数：name --》串口名字
+         (3)配置串口
+                波特率
+                       bool setBaudRate(qint32 baudRate)
+                                参数：baudRate --》QSerialPort::Baud115200
+                数据位
+                      bool setDataBits(QSerialPort::DataBits dataBits)
+                               参数：dataBits --》QSerialPort::Data5
+                                                             QSerialPort::Data8
+                停止位
+                     bool setStopBits(QSerialPort::StopBits stopBits)
+                              参数：QSerialPort::OneStop   1位停止位
+                                        QSerialPort::TwoStop   2位停止位  
+                奇偶校验
+                    bool setParity(QSerialPort::Parity parity)
+                             参数：QSerialPort::NoParity --》无奇偶校验
+                                       QSerialPort::EvenParity --》偶校验
+                流控
+         (4)打开串口
+                QT文件一样的接口函数
+         (5)读写串口数据
+                QT文件一样的接口函数
+                注意：不能直接使用read读取串口数据，需要关联readyRead()信号，自己写个槽函数，在槽函数里面调用read/readAll接收串口信息
+         (6)关闭串口
+                QT文件一样的接口函数
+
+
+linux中的串口编程
+======================
+  1.思路步骤：
+        第一步：打开串口的驱动
+                linux系统IO函数open()
+        第二步：配置串口(跟QT配置串口思路一样，就是接口函数不一样)
+        第三步：读写串口数据
+                linux系统IO函数read()/write()
+        第四步：关闭串口
+                linux系统IO函数close()
+  2.重点说一下配置串口
+        struct termios  //保存串口配置的标志位信息
+        {
+             详情请看ppt
+        }  
+        步骤：
+        //声明设置串口的结构体
+	struct termios termios_new;
+	
+	//先清空该结构体
+	bzero( &termios_new, sizeof(termios_new));
+	
+	//	cfmakeraw()设置终端属性，就是设置termios结构中的各个参数。
+	cfmakeraw(&termios_new);
+	
+	//设置波特率
+	//termios_new.c_cflag=(B9600);
+	cfsetispeed(&termios_new, B9600);
+	cfsetospeed(&termios_new, B9600);
+	
+	//CLOCAL和CREAD分别用于本地连接和接受使能，因此，首先要通过位掩码的方式激活这两个选项。    
+	termios_new.c_cflag |= CLOCAL | CREAD;
+	
+	//通过掩码设置数据位为8位
+	termios_new.c_cflag &= ~CSIZE;
+	termios_new.c_cflag |= CS8; 
+	
+	//设置无奇偶校验
+	termios_new.c_cflag &= ~PARENB;
+	
+	//一位停止位
+	termios_new.c_cflag &= ~CSTOPB;
+	//tcflush(fd,TCIFLUSH);
+	
+	// 可设置接收字符和等待时间，无特殊要求可以将其设置为0
+	termios_new.c_cc[VTIME] = 2; // 等待时间
+	termios_new.c_cc[VMIN] = 1;  //接收字符的数量(串口的收发缓冲区只要>=1个字节的数据，就立马接收)
+	
+	// 用于清空输入/输出缓冲区
+	tcflush (fd, TCIFLUSH);
+	
+	//完成配置后，可以使用以下函数激活串口设置
+	tcsetattr(fd,TCSANOW,&termios_new);
+                     
+
+
+RFID读卡模块，利用串口读取卡号
+=====================
+   1.RFID工作原理
+        卡靠近读卡器，读卡器本身对外发送电磁波信号，卡靠近的时候就会感应到卡的存在
+   2.ISO14443A命令
+         A命令：请求命令，激活读卡模块，使它对外发射电磁信号(为了方便卡等一会靠近的时候可以感应到卡的存在)
+         B命令：防碰撞命令，防止多张卡同时刷的时候，起冲突，防碰撞算法可以挑选其中一张卡来处理
+   3.代码思路整理
+        open(串口的驱动);
+        init_tty(); //配置串口
+        //通过串口发送A命令给模块
+        char buf[7];
+        char otherbuf[]
+        buf[0]=....
+         
+
+        buf[6]=....
+        write(串口,buf,7);
+        read(串口,模块应答信息,otherbuf);
+        if(otherbuf[2]==0x00)  //应答成功
+        {
+
+        }
+        else //应答失败
+        {
+
+        }
+   4.读取卡号代码主要注意的问题
+         问题一：
+              fd = open("/dev/ttySAC1", O_RDWR | O_NOCTTY | O_NONBLOCK); //非阻塞的方式打开
+              阻塞的方式--》串口没有数据可读，read会阻塞
+              非阻塞的方式打开--》无论串口是否有数据可读，read都不会阻塞
+练习：
+    1.写出发送A,B命令的代码，尝试读取卡号
+    2.任意位置显示摄像头拍摄的画面
+       讲解多线程实现摄像头画面显示
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
